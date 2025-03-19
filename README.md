@@ -1,4 +1,4 @@
- <img src="https://imgur.com/XakYOA5.png" alt="Logo.png" height="250">
+ <!--- img src="https://imgur.com/XakYOA5.png" alt="Logo.png" height="250" --->
 
 ## DEPARTMENT OF COMPUTER SCIENCE
 ## WEB TECHNOLOGIES
