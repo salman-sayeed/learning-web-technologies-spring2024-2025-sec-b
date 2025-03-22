@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <title>JS Example</title>
+</head>
+<body>
+
+    <h1 id="head">Javascript Test</h1>
+
+    <fieldset>
+
+        <legend>LOGIN</legend>
+        <form method="" action="" onsubmit="return validateForm()">
+
+            <table>
+                <tr>
+                    <td><label for="username">Username</label></td>
+                    <td><input type="text" id="username" name="username" value="" onblur="test1()"/></td>
+                </tr>
+
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="password" id="password" name="password" value="" onblur="test2()"/></td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" name="button" id="button" value="Submit" /></td>
+                </tr>
+            </table>
+        </form>
+
+        <p id="warn1"></p>
+        <p id="warn2"></p>
+
+    </fieldset>
+
+    <script>
+        function test1(){
+            let username = document.getElementById('username').value;
+            let warn1 = document.getElementById('warn1');
+
+            if(username == ""){
+                warn1.innerHTML = "Username field can't be empty!";
+                warn1.style.color = 'red';
+                return false;
+            }
+            else {
+                document.getElementById('head').innerHTML = username;
+                warn1.innerHTML = "";
+                return true;
+            }
+        }
+
+        function test2(){
+            let password = document.getElementById('password').value;
+            let warn2 = document.getElementById('warn2');
+
+            if(password == ""){
+                warn2.innerHTML = "Password field can't be empty!";
+                warn2.style.color = 'red';
+                return false;
+            }
+            else {
+                warn2.innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateForm(){
+            return test1() && test2();
+        }
+    </script>
+
+</body>
+</html>
