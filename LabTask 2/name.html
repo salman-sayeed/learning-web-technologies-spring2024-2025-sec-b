@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Task 2 | Name</title>
+</head>
+
+<body>
+    <label for="name">Name</label><br>
+    <input type="text" id="name"><br><br>
+    <input type="button" value="SUBMIT" onclick="validate()">
+    <p id="error" style="color: red;"></p><br>
+    <p><a href="home.html">Go back to Home!</a></p>
+
+    <script>
+        function validate(){
+            let name = document.getElementById("name").value.trim();
+            let error = document.getElementById("error");
+
+            if (name === "") {
+                error.textContent = "Name cannot be empty.";
+                return;
+            }
+
+            let words = name.split(" ").filter(word => word !== "");
+            if (words.length < 2) {
+                error.textContent = "Name must contain at least two words.";
+                return;
+            }
+            
+            if (!valName(name)) {
+                error.textContent = "Name must start with a letter and contain only letters, dots (.), or dashes (-).";
+                return;
+            }
+
+            error.textContent = "Valid name!";
+            error.style.color = "green";
+        }
+
+        function valName(name){
+            if (!/^[a-zA-Z]/.test(name)) {
+                return false; 
+            }
+
+            for (let i = 0; i < name.length; i++) {
+                let char = name[i];
+                if (!(char >= 'a' && char <= 'z') && !(char >= 'A' && char <= 'Z') && char !== '.' && char !== '-' && char !== ' ') {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+    </script>
+    
+</body>
+</html>
