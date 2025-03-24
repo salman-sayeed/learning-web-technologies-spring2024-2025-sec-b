@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Task 2 | Email</title>
+</head>
+
+<body>
+    <label for="email">Email</label><br>
+    <input type="text" id="email"><br><br>
+    <input type="button" value="SUBMIT" onclick="validate()">
+    <p id="error" style="color: red;"></p><br>
+    <p><a href="home.html">Go back to Home!</a></p>
+
+    <script>
+        function validate() {
+            let email = document.getElementById("email").value.trim();
+            let error = document.getElementById("error");
+
+            if (email === "") {
+                error.textContent = "Email cannot be empty.";
+                return;
+            }
+
+            if (!validEmail(email)) {
+                error.textContent = "Invalid email format. Must be in the format: anything@example.com";
+                return;
+            }
+
+            error.textContent = "Valid email!";
+            error.style.color = "green";
+        }
+
+        function validEmail(email) {
+            let atIndex = email.indexOf("@");
+            if (atIndex === -1 || email.indexOf("@", atIndex + 1) !== -1) {
+                return false;
+            }
+
+            let localPart = email.substring(0, atIndex);
+            let domainPart = email.substring(atIndex + 1);
+
+            if (localPart.length === 0 || domainPart.length === 0) {
+                return false;
+            }
+
+            let dotIndex = domainPart.indexOf(".");
+            if (dotIndex === -1 || dotIndex === 0 || dotIndex === domainPart.length - 1) {
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

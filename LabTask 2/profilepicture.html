@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Task 2 | Profile Picture</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Profile Picture</legend>
+        
+        <label for="userid">User ID</label>
+        <input type="text" id="userid"><br><br>
+        
+        <label for="picture">Picture</label>
+        <input type="file" id="picture" accept="image/*"><br><br>
+        
+    </fieldset>
+    
+    <p id="error" style="color: red;"></p><br>
+    <input type="button" value="SUBMIT" onclick="validate()">
+    <p><a href="home.html">Go back to Home!</a></p>
+
+    <script>
+        function validate() {
+            let userid = document.getElementById("userid").value.trim();
+            let picture = document.getElementById("picture").files[0];
+            let error = document.getElementById("error");
+
+            if (userid === "") {
+                error.textContent = "User ID cannot be empty.";
+                return;
+            }
+
+            if (isNaN(userid) || parseInt(userid) <= 0) {
+                error.textContent = "User ID must be a positive number.";
+                return;
+            }
+
+            if (!picture) {
+                error.textContent = "Please select a picture.";
+                return;
+            }
+
+            error.textContent = "Profile picture uploaded successfully!";
+            error.style.color = "green";
+        }
+    </script>
+</body>
+</html>

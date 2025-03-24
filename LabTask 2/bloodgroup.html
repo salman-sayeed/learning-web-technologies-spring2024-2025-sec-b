@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Task 2 | Blood Group</title>
+</head>
+<body>
+
+    <label for="bg">Blood Group</label>
+    <select id="bg">
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+    </select>
+    <hr>
+    <p id="error" style="color: red;"></p><br>
+    <input type="button" value="SUBMIT" onclick="validate()">
+    <p><a href="home.html">Go back to Home!</a></p>
+
+    <script>
+        function validate() {
+            let bloodGroup = document.getElementById("bg").value;
+            let error = document.getElementById("error");
+
+            if (bloodGroup === "") {
+                error.textContent = "Please select a blood group.";
+                return;
+            }
+
+
+            error.textContent = "Blood group selected: " + bloodGroup;
+            error.style.color = "green";
+        }
+    </script>
+    
+</body>
+</html>

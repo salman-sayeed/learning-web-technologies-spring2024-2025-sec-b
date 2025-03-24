@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Task 2 | Degree</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Degree</legend>
+        <input type="checkbox" id="ssc" name="degree">
+        <label for="ssc">SSC</label>
+        <input type="checkbox" id="hsc" name="degree">
+        <label for="hsc">HSC</label>
+        <input type="checkbox" id="bsc" name="degree">
+        <label for="bsc">BSc</label>
+    </fieldset>
+    <p id="error" style="color: red;"></p><br>
+    <input type="button" value="SUBMIT" onclick="validate()">
+    <p><a href="home.html">Go back to Home!</a></p>
+
+    <script>
+        function validate() {
+            let checkboxes = document.getElementsByName("degree");
+            let error = document.getElementById("error");
+            let isSelected = false;
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    isSelected = true;
+                    break;
+                }
+            }
+
+            if (!isSelected) {
+                error.textContent = "At least one degree must be selected.";
+                return;
+            }
+
+            error.textContent = "Valid selection!";
+            error.style.color = "green";
+        }
+    </script>
+</body>
+</html>

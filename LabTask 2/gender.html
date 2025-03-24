@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Task 2 | Gender</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Gender</legend>
+        <input type="radio" id="male" name="gender">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender">
+        <label for="other">Other</label>
+    </fieldset>
+    <p id="error" style="color: red;"></p><br>
+    <input type="button" value="SUBMIT" onclick="validate()">
+    <p><a href="home.html">Go back to Home!</a></p>
+
+    <script>
+        function validate() {
+            let genderRadios = document.getElementsByName("gender");
+            let error = document.getElementById("error");
+            let isSelected = false;
+
+            for (let i = 0; i < genderRadios.length; i++) {
+                if (genderRadios[i].checked) {
+                    isSelected = true;
+                    break;
+                }
+            }
+
+            if (!isSelected) {
+                error.textContent = "At least one option must be selected.";
+                return;
+            }
+
+            error.textContent = "Valid selection!";
+            error.style.color = "green";
+        }
+    </script>
+</body>
+</html>
